@@ -8,7 +8,7 @@ using Microsoft.Extensions.Options;
 using var host = Host.CreateDefaultBuilder(args)
     .ConfigureServices((context, services) => {
         services.AddDbContext<DatabaseContext>(options =>
-        options.UseSqlServer("Data Source=DESKTOP-VV71SPC\\SQLEXPRESS;Initial Catalog=AbdullahDatabase;Integrated Security=True;Trust Server Certificate=True"));
+        options.UseSqlServer("Data Source=DESKTOP-3DNLIDP\\SQLEXPRESS;Initial Catalog=AbdullahDatabase;Integrated Security=True;Trust Server Certificate=True"));
     }).Build();
 
 using var scope = host.Services.CreateScope();
@@ -16,14 +16,17 @@ var DatabaseContext = scope.ServiceProvider.GetService<DatabaseContext>();
 
 try
 {
-    await DbContext.Database.EnsureCreatedAsync();
-    if (!DbContext.Products.Any)
+    await DatabaseContext.Database.EnsureCreatedAsync();
+    if (!DatabaseContext.Products.Any())
     {
+        var newProduct = new Products
+        { ProductName = "Laptop", Price = 1000, Category = "Computers", Stock = 15 };
 
-        {
-            new Products { ProductId = 1, ProductName = "Laptop", };
-        
-
-        }
+        DatabaseContext.Products.Add(newProduct);
+        await DatabaseContext.SaveChangesAsync();
     }
 }
+catch (Exception ex)
+{
+    Console.WriteLine($"Error: {ex.Message}");
+} 
