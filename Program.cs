@@ -1,8 +1,9 @@
-﻿using Microsoft.Extensions.Options;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+﻿using EntityFrameWorkExample.model.entities;
 using EntityFrameWorkExample.Model;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 
 using var host = Host.CreateDefaultBuilder(args)
     .ConfigureServices((context, services) => {
@@ -13,3 +14,16 @@ using var host = Host.CreateDefaultBuilder(args)
 using var scope = host.Services.CreateScope();
 var DatabaseContext = scope.ServiceProvider.GetService<DatabaseContext>();
 
+try
+{
+    await DbContext.Database.EnsureCreatedAsync();
+    if (!DbContext.Products.Any)
+    {
+
+        {
+            new Products { ProductId = 1, ProductName = "Laptop", };
+        
+
+        }
+    }
+}
