@@ -91,8 +91,18 @@ var DatabaseContext = scope.ServiceProvider.GetService<DatabaseContext>();
 
 //}
 
-var electronics = from p in DatabaseContext.Products where p.Price>900 select p;
-foreach (var product in electronics)
-{
-    Console.WriteLine($"{product.ProductName} - {product.Price}");
-}
+//var electronics = from p in DatabaseContext.Products where p.ProductId == 2 select new {p.ProductId, p.ProductName, p.Price};
+//foreach (var product in electronics)
+//{
+//    Console.WriteLine($"{product.ProductId} - {product.ProductName} - {product.Price}");
+//}
+
+//var count = (from p in DatabaseContext.Products where p.Category == "Electronics" select p).Count();
+//Console.WriteLine(count);
+
+//var productValue = from p in DatabaseContext.Products select p.Price * p.Stock;
+//foreach(var product in productValue)
+//{
+//    Console.WriteLine(product);
+//}
+
