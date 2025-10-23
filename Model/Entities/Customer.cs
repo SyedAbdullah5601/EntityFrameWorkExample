@@ -26,5 +26,17 @@ namespace EntityFrameWorkExample.model.entities
         public string address { get; set; }
         [Column("phone_number")]
         public string phone_number { get; set; }
+
+        public Customer() { }
+        public Customer(string first_name, string last_name, string email, string password, string address, string phone_number)
+        {
+
+            this.first_name = first_name;
+            this.last_name = last_name;
+            this.email = email;
+            this.password = password;
+            this.address = address;
+            this.phone_number = phone_number;
+        }
     }
 }

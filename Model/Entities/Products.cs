@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Reflection.Emit;
 
 namespace EntityFrameWorkExample.model.entities
 {
@@ -14,7 +15,7 @@ namespace EntityFrameWorkExample.model.entities
         [Column("product_name")]
         public string ProductName { get; set; }
 
-        [Column("product_price", TypeName = "decimal(18,2)")]
+        [Column("product_price")]
         public decimal Price { get; set; }
 
         [Column("stock")]
@@ -22,5 +23,13 @@ namespace EntityFrameWorkExample.model.entities
 
         [Column("category")]
         public string Category { get; set; }
+        public Products() { }
+        public Products(string productName, decimal price, int stock, string category)
+        {
+            ProductName = productName;
+            Price = price;
+            Stock = stock;
+            Category = category;
+        }
     }
 }

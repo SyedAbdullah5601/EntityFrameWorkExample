@@ -19,8 +19,18 @@ namespace EntityFrameWorkExample.model.entities
         [Column("department")]
         public string department { get; set; }
         [Column("annual_salary")]
-        public string annual_salary { get; set; }
+        public decimal annual_salary { get; set; }
         [Column("years_experience")]
-        public string years_experience { get; set; }
+        public int years_experience { get; set; }
+
+        public Employee() { }
+        public Employee(string name, string department, decimal annualSalary, int yearsExperience)
+        {
+            this.name = name;
+            this.department = department;
+            this.annual_salary = annualSalary;
+            this.years_experience = yearsExperience;
+        }
     }
+  
 }
