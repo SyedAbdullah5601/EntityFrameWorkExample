@@ -4,7 +4,7 @@ using System.Reflection.Emit;
 
 namespace EntityFrameWorkExample.model.entities
 {
-    [Table("Products")] // optional but clearer
+    [Table("Products")] 
     public class Products
     {
         [Key]
